@@ -13,7 +13,7 @@ jobs:
         with: 
           token: ${{ secrets.TOKEN }}
           submodules: 'true'
-          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+          fetch-depth: 0
 
       - name: Build Link Index
         uses: jackyzha0/hugo-obsidian@v2.20

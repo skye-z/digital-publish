@@ -102,7 +102,7 @@
     const SEARCH_ENABLED = {{.Site.Data.config.search.enableSemanticSearch}}
     const LATEX_ENABLED = {{.Site.Data.config.enableLatex}}
     const PRODUCTION = {{ hugo.IsProduction }}
-    const BASE_URL = window.location.origin
+    const BASE_URL = {{.Site.BaseURL}}
     const fetchData = Promise.all([
           fetch("{{ $linkIndex.Permalink }}")
             .then(data => data.json())
@@ -141,7 +141,7 @@
 
       {{if $data.enableLinkPreview | default $.Site.Data.config.enableLinkPreview}}
       initPopover(
-        BASE_URL,
+        window.location.origin,
         {{$data.enableContextualBacklinks | default $.Site.Data.config.enableContextualBacklinks}}
       )
       {{end}}
@@ -157,7 +157,7 @@
 
         const drawGlobal = isHome && {{$.Site.Data.graphConfig.enableGlobalGraph}};
         drawGraph(
-            BASE_URL,
+            window.location.origin,
             drawGlobal,
             {{$.Site.Data.graphConfig.paths}},
             drawGlobal ? {{$.Site.Data.graphConfig.globalGraph}} : {{$.Site.Data.graphConfig.localGraph}}
